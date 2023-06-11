@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body{
+        background-color:black;
+    }
+    .block {
+
+      width: 80px;
+      height: 80px;
+      margin: 8px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="block" id="block1"></div><br>
+  <div class="block" id="block2"></div><br>
+  <div class="block" id="block3"></div><br>
+
+  <script>
+    function blinkBlocks() {
+      var blocks = document.querySelectorAll('.block');
+      var colors = ['red', 'yellow', 'green'];
+      var currentIndex = 0;
+      var blinkInterval;
+
+      function blinkBlock() {
+        blocks[currentIndex].style.backgroundColor = colors[currentIndex];
+        setTimeout(function() {
+          blocks[currentIndex].style.backgroundColor = '';
+          currentIndex = (currentIndex + 1) % colors.length;
+          blinkInterval = setInterval(blinkBlock, 100);
+        }, 100);
+      }
+
+      blinkInterval = setInterval(blinkBlock, 100);
+    }
+
+    blinkBlocks();
+  </script>
+</body>
+</html>
